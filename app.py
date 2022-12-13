@@ -34,8 +34,14 @@ def get_hit_count():
             time.sleep(0.5)
 
 @app.route('/wechat', methods=["POST"])
-def hello():
+def wechat():
     count = get_hit_count()
     data = request.data
     print(data, flush=True)
+    return 'Hello World! you have been seen {} times.\n'.format(count)
+
+
+@app.route('/', methods=["POST"])
+def hello():
+    count = get_hit_count()
     return 'Hello World! you have been seen {} times.\n'.format(count)

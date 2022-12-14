@@ -33,15 +33,46 @@ def get_hit_count():
             retries -= 1
             time.sleep(0.5)
 
-@app.route('/wechat', methods=["POST"])
+@app.route('/wechat', methods=["GET"])
 def wechat():
-    count = get_hit_count()
+    # count = get_hit_count()
+    echostr = request.args.get('echostr')
+    nonce = request.args.get('nonce')
+    timestamp = request.args.get('timestamp')
+    # dt = [echostr, nonce, timestamp]
+    # dt = [echostr, timestamp, nonce]
+    # dt = [nonce, timestamp, echostr]
+    # dt = [nonce, echostr, timestamp]
+    # dt = [timestamp, nonce, echostr]
+    dt = [timestamp, echostr, nonce]
+    print("dt----5")
+    print(dt)
+    # print(echostr)
+    # print(dt)
+    dt.sort()
+    # print("dt")
+    print(dt)
+    str_check = ''.join(dt)
+    print('str_check')
+    print(str_check)
+    print("str_check.encode('utf-8')")
+    print(str_check.encode('utf-8'))
     data = request.data
     print(data, flush=True)
-    return 'Hello World! you have been seen {} times.\n'.format(count)
+    import hashlib
+    hash_object = hashlib.sha1(str_check.encode('utf-8'))
+    print("hash_object")
+    print(hash_object)
+    pbHash = hash_object.hexdigest()
+    # length = len(pbHash.decode("hex"))
+    print("pbHash")
+    print(pbHash)
+    # print(pbHash.decode("hex"))
+
+    return 'Hello World! you have been seen {} times.\n'.format(pbHash)
 
 
-@app.route('/', methods=["POST"])
+@app.route('/', methods=["GET"])
 def hello():
     count = get_hit_count()
     return 'Hello World! you have been seen {} times.\n'.format(count)

@@ -2,3 +2,4 @@ flask
 redis
 websocket-client
 rel
+openpyxl

@@ -111,5 +111,5 @@ def hello():
     # print(pbHash)
     # print(pbHash.decode("hex"))
     if pbHash == signature:
-        return echostr
-    return 'Hello World! you have been seen {} times.\n'.format(count)
+        return 0
+    return 0

@@ -77,5 +77,39 @@ def wechat():
 
 @app.route('/', methods=["GET"])
 def hello():
-    count = get_hit_count()
+    echostr = request.args.get('echostr')
+    signature = request.args.get('signature')
+    nonce = request.args.get('nonce')
+    timestamp = request.args.get('timestamp')
+    # dt = [echostr, nonce, timestamp]
+    # dt = [echostr, timestamp, nonce]
+    # dt = [nonce, timestamp, echostr]
+    # dt = [nonce, echostr, timestamp]
+    # dt = [timestamp, nonce, echostr]
+    dt = [timestamp, 'Iron@zzz', nonce]
+    print("dt----5")
+    # print(dt)
+    # print(echostr)
+    # print(dt)
+    dt.sort()
+    # print("dt")
+    # print(dt)
+    str_check = ''.join(dt)
+    # print('str_check')
+    # print(str_check)
+    # print("str_check.encode('utf-8')")
+    # print(str_check.encode('utf-8'))
+    data = request.data
+    print(data, flush=True)
+    import hashlib
+    hash_object = hashlib.sha1(str_check.encode('utf-8'))
+    # print("hash_object")
+    # print(hash_object)
+    pbHash = hash_object.hexdigest()
+    # length = len(pbHash.decode("hex"))
+    # print("pbHash")
+    # print(pbHash)
+    # print(pbHash.decode("hex"))
+    if pbHash == signature:
+        return echostr
     return 'Hello World! you have been seen {} times.\n'.format(count)

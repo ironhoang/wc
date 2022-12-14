@@ -75,7 +75,7 @@ def wechat():
     return 'Hello World! you have been seen {} times.\n'.format(pbHash)
 
 
-@app.route('/', methods=["GET"])
+@app.route('/wechat', methods=["POST"])
 def hello():
     echostr = request.args.get('echostr')
     signature = request.args.get('signature')

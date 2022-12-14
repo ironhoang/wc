@@ -36,7 +36,7 @@ def get_hit_count():
 @app.route('/wechat', methods=["GET"])
 def wechat():
     # count = get_hit_count()
-    echostr = request.args.get('echostr')
+    signature = request.args.get('signature')
     nonce = request.args.get('nonce')
     timestamp = request.args.get('timestamp')
     # dt = [echostr, nonce, timestamp]
@@ -44,7 +44,7 @@ def wechat():
     # dt = [nonce, timestamp, echostr]
     # dt = [nonce, echostr, timestamp]
     # dt = [timestamp, nonce, echostr]
-    dt = [timestamp, echostr, nonce]
+    dt = [timestamp, 'Iron@zzz', nonce]
     print("dt----5")
     print(dt)
     # print(echostr)
@@ -68,6 +68,8 @@ def wechat():
     print("pbHash")
     print(pbHash)
     # print(pbHash.decode("hex"))
+    if pbHash == signature:
+        return True
 
     return 'Hello World! you have been seen {} times.\n'.format(pbHash)
 

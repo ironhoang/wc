@@ -104,16 +104,6 @@ def login():
     print(response)
     return json.dumps(response)
 
-@app.route('/login', methods=["POST"])
-def login():
-    secret = request.args.get('secret')
-    appid = request.args.get('appid')
-    timestamp = request.args.get('timestamp')
-
-    url = f"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={secret}"
-    response = requests.get(url)
-    print(response)
-    return json.dumps(response)
 
 @app.route('/get-file', methods=["POST"])
 def get_file():

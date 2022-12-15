@@ -198,8 +198,10 @@ class XTB:
                     start = start - timedelta(minutes=minutes)
                     start = start.strftime("%m/%d/%Y %H:%M:%S")
 
-        start = self.time_conversion(start)
-        end = self.time_conversion(end)
+        start = 1671007049000
+        # start = self.time_conversion(start)
+        end = 1671010649000
+        # end = self.time_conversion(end)
 
         CHART_RANGE_INFO_RECORD = {
             "end": end,
@@ -208,6 +210,8 @@ class XTB:
             "symbol": symbol,
             "ticks": 0
         }
+        print("CHART_RANGE_INFO_RECORD")
+        print(CHART_RANGE_INFO_RECORD)
         candles = {
             "command": "getChartRangeRequest",
             "arguments": {
@@ -531,7 +535,6 @@ class XTB:
         days = final_date.days
         days = int(days)
         hours = int(hours)
-        hours += 2
         minutes = int(minutes)
         seconds = int(seconds)
         time = (days * 24 * 60 * 60 * 1000) + (hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000)

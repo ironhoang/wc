@@ -1,6 +1,10 @@
 flask
+numpy
+pandas
 redis
 websocket-client
 rel
 openpyxl
 requests
+yfinance
+xmltodict

@@ -4,5 +4,4 @@ websocket-client
 rel
 openpyxl
 requests
-yfinance
 xmltodict

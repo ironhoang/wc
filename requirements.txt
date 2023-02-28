@@ -1,6 +1,4 @@
 flask
-numpy
-pandas
 redis
 websocket-client
 rel

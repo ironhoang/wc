@@ -94,7 +94,7 @@ def hello():
     pbHash = hash_object.hexdigest()
     data_indict = xmltodict.parse(data)
     if pbHash == signature:
-        return format_instant_reply(data_indict, "Xin cam on")
+        return format_instant_reply(data_indict, "")
     return "0"
 
 @app.route('/login', methods=["POST"])

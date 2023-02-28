@@ -1,6 +1,6 @@
 flask
-numpy==1.21.5
-pandas==1.3.1
+numpy
+pandas
 redis
 websocket-client
 rel
